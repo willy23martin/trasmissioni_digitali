@@ -7,7 +7,7 @@ Lezione: Parametri di misura della qualità de un canale di trasmissione digital
 - Parametro di misura: Tasso di Errore di Bit (BER):
     -> rapprasenta il rapporto tra i bit con gli errori ricevuti sul destinatario (Rx)
        ed i bit che sono stati trasmessi sul canale per il sorgente (Tx).
-    -> BER = # bits che si sono ricevuti.
+    -> BER = # bits che si ricevano / # bits che sono stati trasmessi.
 """
 
 #==============================================================================
