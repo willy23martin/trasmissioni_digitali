@@ -19,12 +19,12 @@ Spunti di approfondimento #1:
 - Servizio: 2 ore di conferenza.
     ** Sopporta 90 frames coi bits con errori.
     ** 1 frame è equivalente a 512 bits.
-- Velocità di trasmissione / Frequenza di cifra / bit-rate (Rb): 5 Mb/s.
-- Larghezza di banda (BW): 8 MHz.
+- Velocità di trasmissione / Frequenza di cifra / bit-rate (Rb): 5 Mbps.
+- Larghezza di Banda (BW): 8 MHz.
 - Calcolare:
     ** BER.
     ** Rapporto Segnale-Rumore (SNR).
-    ** Potenza media ricevuta (Px).
+    ** Potenza media ricevuta (Pr).
 - Simulazione dinamica: BER-dinamico.py.
 """
 import math
@@ -92,11 +92,11 @@ def calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_band
 
 tasso_di_errore_di_bit_BER = calcolo_BER(bits_con_errori, bits_totali_trasmessi_per_servizio)
 rapporto_segnale_rumore_SNR_dB = calcolo_SNR_dB_con_C_BW(capacita_di_canale_C, larghezza_di_banda_BW)
-potenza_media_ricevuta = calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_banda_BW)
+potenza_media_ricevuta_Pr = calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_banda_BW)
 
 print("Il Tasso di errore di bit (BER) è: \n", tasso_di_errore_di_bit_BER)
 print("Il Rapporto Segnale Rumore è: ", rapporto_segnale_rumore_SNR_dB, "dB")
-print("La Potenza media ricevuta è: ",  potenza_media_ricevuta, "mW")
+print("La Potenza media ricevuta è: ",  potenza_media_ricevuta_Pr, "mW")
 
 
 #==============================================================================

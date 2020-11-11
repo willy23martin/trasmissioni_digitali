@@ -23,12 +23,12 @@ Spunti di approfondimento #1:
 - Servizio: 2 ore di conferenza.
     ** Sopporta 90 frames coi bits con errori.
     ** 1 frame è equivalente a 512 bits.
-- Velocità di trasmissione / Frequenza di cifra / bit-rate (Rb): 5 Mb/s.
-- Larghezza di banda (BW): 8 MHz.
+- Velocità di trasmissione / Frequenza di cifra / bit-rate (Rb): 5 Mbps.
+- Larghezza di Banda (BW): 8 MHz.
 - Calcolare:
     ** BER.
     ** Rapporto Segnale-Rumore (SNR).
-    ** Potenza media ricevuta (Px).
+    ** Potenza media ricevuta (Pr).
 - Simulazione dinamica: BER-dinamico.py.
 """
 import matplotlib.pyplot as plotter
