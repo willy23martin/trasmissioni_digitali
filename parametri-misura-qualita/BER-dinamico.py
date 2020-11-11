@@ -128,6 +128,9 @@ plotter.plot(potenza_media_ricevuta_Pr_y, capacita_di_canale_C_y)
 plotter.xlabel('Potenza media ricevuta - Pr (mW)')
 plotter.ylabel('Capacità di Canale (bps)')
 plotter.show()
+
+bits_totali_trasmessi_per_servizio = frequenza_di_cifra_Rb * tempo_servizio_secondi
+tasso_di_errore_di_bit_BER_y =
 """"""
 
 #==============================================================================
