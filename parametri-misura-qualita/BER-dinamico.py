@@ -114,12 +114,15 @@ capacita_di_canale_C_y = numpy.multiply(numpy.log2(1 + rapporto_segnale_rumore_S
 print("Capacità di canale \n", capacita_di_canale_C_y)
 potenza_media_ricevuta_Pr_y = numpy.multiply(rapporto_segnale_rumore_SNR_lineare_x, (larghezza_di_banda_BW * rumore_No))
 print("Potenza ricevuta \n", potenza_media_ricevuta_Pr_y)
-plotter.plot(rapporto_segnale_rumore_SNR_dB_x, capacita_di_canale_C_y)
+
+plotter.plot(rapporto_segnale_rumore_SNR_lineare_x, capacita_di_canale_C_y)
+plotter.xscale('logit')
 plotter.xlabel('Rapporto Segnale-Rumore - SNR (dB)')
 plotter.ylabel('Capacità di Canale (bps)')
 plotter.show()
 
-plotter.plot(rapporto_segnale_rumore_SNR_dB_x, potenza_media_ricevuta_Pr_y)
+plotter.plot(rapporto_segnale_rumore_SNR_lineare_x, potenza_media_ricevuta_Pr_y)
+plotter.xscale('logit')
 plotter.xlabel('Rapporto Segnale-Rumore - SNR (dB)')
 plotter.ylabel('Potenza media ricevuta - Pr (mW)')
 plotter.show()
