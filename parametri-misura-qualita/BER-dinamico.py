@@ -107,13 +107,19 @@ print("La Potenza media ricevuta è: ",  potenza_media_ricevuta_Pr, "mW")
 Simulazione: con plotter matplotlib.pyplot
 """
 rapporto_segnale_rumore_SNR_dB_x = 0.1 * numpy.arange(-9, 0, 0.01, dtype=float)
-print("SNR (dB) \n", rapporto_segnale_rumore_SNR_dB_x)
+print("SNR (dB) \n", rapporto_segnale_rumore_SNR_dB_x, " \n")
 rapporto_segnale_rumore_SNR_lineare_x = numpy.power(10, numpy.divide(rapporto_segnale_rumore_SNR_dB_x, 10))
-print("SNR lineare \n", rapporto_segnale_rumore_SNR_lineare_x)
+print("SNR lineare \n", rapporto_segnale_rumore_SNR_lineare_x, " \n")
 capacita_di_canale_C_y = numpy.multiply(numpy.log2(1 + rapporto_segnale_rumore_SNR_lineare_x), larghezza_di_banda_BW)
-print("Capacità di canale \n", capacita_di_canale_C_y)
+print("Capacità di canale \n", capacita_di_canale_C_y, " \n")
 potenza_media_ricevuta_Pr_y = numpy.multiply(rapporto_segnale_rumore_SNR_lineare_x, (larghezza_di_banda_BW * rumore_No))
-print("Potenza ricevuta \n", potenza_media_ricevuta_Pr_y)
+print("Potenza ricevuta \n", potenza_media_ricevuta_Pr_y, " \n")
+
+frequenza_di_cifra_Rb_x = 1000000 * numpy.arange(3, 10, 1, dtype=float)
+bits_totali_trasmessi_per_servizio_x = numpy.multiply(frequenza_di_cifra_Rb_x, tempo_servizio_secondi)
+print("Bits totali trasmessi per servizio: \n", bits_totali_trasmessi_per_servizio_x, " \n")
+tasso_di_errore_di_bit_BER_y = numpy.divide(bits_con_errori, bits_totali_trasmessi_per_servizio_x)
+print("Tasso di errore di bit (BER): \n", tasso_di_errore_di_bit_BER_y, " \n")
 
 plotter.plot(rapporto_segnale_rumore_SNR_lineare_x, capacita_di_canale_C_y)
 plotter.xscale('logit')
@@ -130,6 +136,12 @@ plotter.show()
 plotter.plot(potenza_media_ricevuta_Pr_y, capacita_di_canale_C_y)
 plotter.xlabel('Potenza media ricevuta - Pr (mW)')
 plotter.ylabel('Capacità di Canale (bps)')
+plotter.show()
+
+
+plotter.plot(frequenza_di_cifra_Rb_x, tasso_di_errore_di_bit_BER_y)
+plotter.xlabel('Frequenza di cifra - Rb (bps)')
+plotter.ylabel("Tasso di Errori di Bit (BER)")
 plotter.show()
 
 """"""
