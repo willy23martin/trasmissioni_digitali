@@ -11,7 +11,7 @@ Lezione: Parametri di misura della qualità di un canale di trasmissione digital
 
 I libreri Python-MATLAB:
 - https://matplotlib.org/users/installing.html
-- https://matplotlib.org/users/installing.html
+- https://matplotlib.org/tutorials/introductory/pyplot.html
 """
 
 #==============================================================================
