@@ -8,6 +8,10 @@ Lezione: Parametri di misura della qualità de un canale di trasmissione digital
     -> rapprasenta il rapporto tra i bit con gli errori ricevuti sul destinatario (Rx)
        ed i bit che sono stati trasmessi sul canale per il sorgente (Tx).
     -> BER = # bits con errori che si sono stati ricevuti / # bits che sono stati trasmessi.
+
+I libreri Python-MATLAB:
+- https://matplotlib.org/users/installing.html
+- https://matplotlib.org/users/installing.html
 """
 
 #==============================================================================
@@ -27,8 +31,9 @@ Spunti di approfondimento #1:
     ** Potenza media ricevuta (Px).
 - Simulazione dinamica: BER-dinamico.py.
 """
+import matplotlib.pyplot as plotter
+import numpy as numpy
 import math
-
 """
 Variabili:
 """
@@ -92,12 +97,38 @@ def calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_band
 
 tasso_di_errore_di_bit_BER = calcolo_BER(bits_con_errori, bits_totali_trasmessi_per_servizio)
 rapporto_segnale_rumore_SNR_dB = calcolo_SNR_dB_con_C_BW(capacita_di_canale_C, larghezza_di_banda_BW)
-potenza_media_ricevuta = calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_banda_BW)
+potenza_media_ricevuta_Pr = calcolo_dB_potenza_media_ricevuta_Pr(capacita_di_canale_C, larghezza_di_banda_BW)
 
 print("Il Tasso di errore di bit (BER) è: \n", tasso_di_errore_di_bit_BER)
 print("Il Rapporto Segnale Rumore è: ", rapporto_segnale_rumore_SNR_dB, "dB")
-print("La Potenza media ricevuta è: ",  potenza_media_ricevuta, "mW")
+print("La Potenza media ricevuta è: ",  potenza_media_ricevuta_Pr, "mW")
 
+"""
+Simulazione: con plotter matplotlib.pyplot
+"""
+rapporto_segnale_rumore_SNR_dB_x = 0.1 * numpy.arange(-9, 0, 0.01, dtype=float)
+print("SNR (dB) \n", rapporto_segnale_rumore_SNR_dB_x)
+rapporto_segnale_rumore_SNR_lineare_x = numpy.power(10, numpy.divide(rapporto_segnale_rumore_SNR_dB_x, 10))
+print("SNR lineare \n", rapporto_segnale_rumore_SNR_lineare_x)
+capacita_di_canale_C_y = numpy.multiply(numpy.log2(1 + rapporto_segnale_rumore_SNR_lineare_x), larghezza_di_banda_BW)
+print("Capacità di canale \n", capacita_di_canale_C_y)
+potenza_media_ricevuta_Pr_y = numpy.multiply(rapporto_segnale_rumore_SNR_lineare_x, (larghezza_di_banda_BW * rumore_No))
+print("Potenza ricevuta \n", capacita_di_canale_C_y)
+plotter.plot(rapporto_segnale_rumore_SNR_dB_x, capacita_di_canale_C_y)
+plotter.xlabel('Rapporto Segnale-Rumore - SNR (dB)')
+plotter.ylabel('Capacità di Canale (bps)')
+plotter.show()
+
+plotter.plot(rapporto_segnale_rumore_SNR_dB_x, potenza_media_ricevuta_Pr_y)
+plotter.xlabel('Rapporto Segnale-Rumore - SNR (dB)')
+plotter.ylabel('Potenza media ricevuta - Pr (mW)')
+plotter.show()
+
+plotter.plot(potenza_media_ricevuta_Pr_y, capacita_di_canale_C_y)
+plotter.xlabel('Potenza media ricevuta - Pr (mW)')
+plotter.ylabel('Capacità di Canale (bps)')
+plotter.show()
+""""""
 
 #==============================================================================
 
