@@ -116,6 +116,7 @@ potenza_media_ricevuta_Pr_y = numpy.multiply(rapporto_segnale_rumore_SNR_lineare
 print("Potenza ricevuta \n", potenza_media_ricevuta_Pr_y, " \n")
 
 frequenza_di_cifra_Rb_x = 1000000 * numpy.arange(3, 10, 1, dtype=float)
+print("Frequenza di cifra: \n", frequenza_di_cifra_Rb_x, " \n")
 bits_totali_trasmessi_per_servizio_x = numpy.multiply(frequenza_di_cifra_Rb_x, tempo_servizio_secondi)
 print("Bits totali trasmessi per servizio: \n", bits_totali_trasmessi_per_servizio_x, " \n")
 tasso_di_errore_di_bit_BER_y = numpy.divide(bits_con_errori, bits_totali_trasmessi_per_servizio_x)
